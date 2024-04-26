@@ -30,6 +30,14 @@ const randomFactReducer = createReducer(initialState, builder => {
             status: FactStatus.FETCHING,
             fact: state.fact
         }))
+        .addCase(success, (state, action) => ({
+            status: FactStatus.SUCCESS,
+            fact: action.payload
+        }))
+        .addCase(failure, (state) => ({
+            status: FactStatus.FAILURE,
+            fact: state.fact
+        }));
 })
 
 export { fatchActions, randomFactReducer }
