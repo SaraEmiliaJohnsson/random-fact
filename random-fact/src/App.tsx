@@ -8,11 +8,6 @@ function App() {
 
   const [randomFact, setRandomFact] = useState<string>('');
 
-
-  // fetchFact(setRandomFact);
-
-
-
   return (
     <>
       <button onClick={() => fetchFact(setRandomFact)}>Get fact</button>
