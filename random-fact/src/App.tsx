@@ -1,20 +1,29 @@
 
+import { useState } from 'react';
 import './App.css'
 
 
 
 function App() {
 
-  fetchFact();
+  const [randomFact, setRandomFact] = useState<string>('');
+
+
+  // fetchFact(setRandomFact);
+
+
 
   return (
     <>
-
+      <button onClick={() => fetchFact(setRandomFact)}>Get fact</button>
+      <p>
+        {randomFact}
+      </p>
     </>
   )
 }
 
-async function fetchFact() {
+async function fetchFact(setRandomFact: React.Dispatch<React.SetStateAction<string>>) {
 
   const URL = 'https://uselessfacts.jsph.pl/api/v2/facts/random?language=en';
 
@@ -24,6 +33,7 @@ async function fetchFact() {
   const randomFact = json.text;
 
   console.log(randomFact);
+  setRandomFact(randomFact);
 
 }
 
